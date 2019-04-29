@@ -22,7 +22,7 @@ Since I selected TensorFlow 2.0.0 Alpha as my deep learning framework I decided 
 This section refers to [this file](https://github.com/SewerynKras/RNN-lore-generation/blob/master/helpers.py#L245) and explains how the model generates new text.\
  \
 Firstly a start string provided by the user is vectorized and fed to the model.\
-Then the model generates a vector of probabilities for each character that could appear next.\
+Then the model generates a vector of probabilities for each character that could appear next.
 
 - If the previous character wasn't whitespace then the character with the highest predicted probability is yielded back to the user and the process begins again
 - If the previous characters was whitespace then the predicted character is chosen using np.random.choice. Additionally a bias parameter can be passed to this function allowing the user to manually increase the likelihood of selected probabilities to make the model more unpredictable/interesting (tho it's recommended to keep the bias parameter close to 0)
