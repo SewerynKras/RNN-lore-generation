@@ -1,4 +1,5 @@
 import numpy as np
+import json
 
 
 class TextVectorizer:
@@ -282,3 +283,24 @@ class TextGenerator:
             yield(char)
             if char == "␃":
                 break
+
+
+def create_default_vectorizer(char_path='data/default_characters.json',
+                              cat_path='data/default_categories.json'):
+    """
+    Loads the default unique characters and categories
+    and returns a new TextVectorizer
+
+    Keyword Arguments:
+        char_path {str} --  (default: {'data/default_characters.json'})
+        cat_path {str} -- (default: {'data/default_categories.json'})
+
+    Returns:
+        TextVectorizer
+    """
+    with open(char_path, 'r') as f:
+        chars = json.load(f)
+    with open(cat_path, 'r') as f:
+        cats = json.load(f)
+    return TextVectorizer(unique_characters=chars,
+                          categories=cats.keys())
